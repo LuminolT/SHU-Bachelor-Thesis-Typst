@@ -1,13 +1,10 @@
-all :
-	typst --font-path ./assets/fonts compile ./thesis.typ
-
 PROJECT_ROOT := $(abspath .)
 OUTPUT_NAME  := thesis
 FONTS_PATH := $(abspath ./assets/fonts)
 
 # Build the thesis PDF from the Typst template
 default build:
-	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) thesis.typ $(OUTPUT_NAME).pdf
+	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) compile thesis.typ $(OUTPUT_NAME).pdf
 
 # Watch for changes to the Typst template and rebuild the thesis automatically
 watch:
