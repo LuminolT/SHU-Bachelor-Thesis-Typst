@@ -33,14 +33,19 @@
 
     My soul looks inside through the window, where the bells rang softly, and Miss Diana leaned back on the sofa lazily with an orange cat sat on her shoulder, which pretends to be tame. Her face was enlightened by the dancing flames in the fireplace, while my frozen heart slightly burns in the wind.],
   keywords_en : ("Genshin Impact", "The Legend of Zelda", "Tencent"),
+  bibliography-file: "refs.bib",
 )
-
 
 = 绪论
 
 == #lorem(1)
 
-#lorem(100)
+嘉人们，谁懂啊@jiaran2021。公式@eq-1
+
+// [ ] Todo: 公式引用为中文
+
+$ sum_(n=1)^infinity 1/n^2 = pi^2/6 $ <eq-1>
+
 
 === #lorem(2)
 
@@ -55,3 +60,5 @@
 === #lorem(2)
 
 #lorem(200)
+
+12

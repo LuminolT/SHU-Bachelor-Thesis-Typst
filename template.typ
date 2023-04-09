@@ -2,6 +2,13 @@
 #let songti = ("Times New Roman", "Songti SC")
 #let kaiti = ("Times New Roman", "Kaiti SC")
 
+// 助手函数，很恐怖吗？是的，这很恐怖。
+#let zhnumbers(num) = {
+  if num == "1" { "一" }
+  else if num == "2" { "二" }
+  else if num == "3" { "三" }
+  else if num == "4" { "四" }
+}
 
 #let content() = {
   v(1em)
@@ -86,6 +93,9 @@
   abstract_en : [],
   keywords_zh : (),
   keywords_en : (),
+
+  // 参考文献bib文件路径
+  bibliography-file: none,
   body,
 ) = {
   set page(paper:  "a4",
@@ -211,28 +221,34 @@
   pagebreak()
 
   // 设置标题格式
-  set heading(numbering: (..nums) => {
-    nums.pos().map(str).join(".") + "　"
-  })
+  set heading(numbering: "1.1.1")
 
   // 设置一级标题格式
-  // TODO: 一级标题应为 第N章 题目
-  show heading.where(level : 1) : it => {
-    set align(center)
-    set text(font:heiti, size: 18pt, weight: "bold" )
-    it.body
-  }
+  // [x] TODO: 一级标题应为 第N章 题目
+  show heading: it => locate(loc => {
+    let levels = counter(heading).at(loc)
+    let deepest = if levels != () {
+      levels.last()
+    } else {
+      1
+    }
 
-  // 二级标题格式
-  show heading.where(level : 2) : it => {
-    set text(font:heiti, size: 14pt, weight: "bold" )
-    it
-  }
-
-  show heading: it => {
-    set text(font:heiti, size: 12pt, weight: "bold" )
-    it
-  } + box(width: 1.8em)
+    set text(10pt, weight: 400)
+    if it.level == 1 [
+      #set align(center)
+      #set text(font:heiti, size: 18pt, weight: "bold")
+      #if it.numbering != none {
+        "第" + zhnumbers(numbering("1", deepest)) + "章 "
+      }
+      #it.body
+    ] else if it.level == 2 [
+      #set text(font:heiti, size: 14pt, weight: "bold" )
+      #it
+    ] else if it.level == 3 [
+      #set text(font:heiti, size: 12pt, weight: "bold" )
+      #it
+    ]
+  })
   
   
   // 设置正文格式
@@ -243,6 +259,19 @@
     v(5pt)
   }
 
-  body  
+  // 设置公式格式
+  set math.equation(numbering: "(1)")
+
+  body
+
+  // 展示参考文献
+  if bibliography-file != none {
+    show bibliography: set text(10pt)
+    bibliography(bibliography-file,
+        title: text(18pt)[参考文献],
+        style: "ieee")
+  }
+  // 支持的引文格式："apa", "chicago-author-date", "ieee", or "mla"
+  // [] TODO: DIY 国标引文格式
 
 }
