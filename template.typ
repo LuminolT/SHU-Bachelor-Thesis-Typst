@@ -1,6 +1,6 @@
-#let heiti = ("Times New Roman", "SimHei",)
-#let songti = ("Times New Roman", "SimSun")
-#let kaiti = ("Times New Roman", "KaiTi")
+#let heiti = ("Times New Roman", "Heiti SC", "Heiti TC")
+#let songti = ("Times New Roman", "Songti SC")
+#let kaiti = ("Times New Roman", "Kaiti SC")
 
 // 助手函数，很恐怖吗？是的，这很恐怖。
 #let zhnumbers(num) = {
@@ -133,7 +133,7 @@
       )[SHANGHAI  UNIVERSITY],
 
       text(
-        font: "SimSun",
+        font: songti,
         size: 36pt,
       )[毕业论文（设计）],
 

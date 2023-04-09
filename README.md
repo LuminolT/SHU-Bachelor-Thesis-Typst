@@ -16,8 +16,10 @@ $ pacman -S typst
 ### 编译
 
 ``` shell
-$ typst compile thesis.typ
+# for linux and macos
+$ make
 ```
+
 
 ## TODO
 由于没有找到学校最新的本科毕业论文格式要求，所以上述格式是参照学校提供的word文档格式编写，其中难免会有细节的疏漏，欢迎PR
@@ -29,4 +31,5 @@ $ typst compile thesis.typ
 - [ ]  公式插入格式
 - [ ]  页首及页尾格式（未找到明确要求）
 - [ ]  模块划分
+- [ ]  windows 编译脚本
 - [ ]  ...
