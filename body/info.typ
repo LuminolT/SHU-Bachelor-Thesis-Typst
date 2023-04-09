@@ -1,0 +1,7 @@
+#let title = "基于copy&paste的毕业论文撰写"
+#let college = "研讨与报告学院"
+#let major = "寄算鸡咳血与寄术"
+#let id =  "114514"
+#let name =  "上大人"
+#let teacher =  "孔乙己"
+#let data = "00000000 - ffffffff"
