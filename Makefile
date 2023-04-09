@@ -4,11 +4,11 @@ FONTS_PATH := $(abspath ./assets/fonts)
 
 # Build the thesis PDF from the Typst template
 default build:
-	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) compile thesis.typ $(OUTPUT_NAME).pdf
+	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) compile ./template/thesis.typ $(OUTPUT_NAME).pdf
 
 # Watch for changes to the Typst template and rebuild the thesis automatically
 watch:
-	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) --watch thesis.typ $(OUTPUT_NAME).pdf
+	typst --font-path $(FONTS_PATH) --root=$(PROJECT_ROOT) --watch ./template/thesis.typ $(OUTPUT_NAME).pdf
 
 # Convert the thesis PDF to a JPG image (ImageMagick should be installed)
 image: build 
